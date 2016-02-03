@@ -1,0 +1,17 @@
+﻿extends layout
+
+
+block content
+  .jumbotron
+    h1 MyWebApp
+  .row
+    each device, i in devices
+      .col-md-4
+        .sidebar
+          .header
+            a(href="/device/" + device.deviceId)= device.deviceId
+          .sidebar__content
+            p(id=device.deviceId)= device.connectionState
+            script.
+              getStatusws("#{device.deviceId}");
+    

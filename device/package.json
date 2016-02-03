@@ -1,0 +1,16 @@
+{
+  "name": "device",
+  "homepage": "https://appelfish.cloudapp.net",
+  "license": "MIT",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtjk/AzureIoTHubMigration"
+  },
+  "dependencies": {
+    "azure-iot-device": "^1.0.0-preview.11",
+    "azure-iot-device-http": "^1.0.0-preview.11",
+    "nitrogen": "~0.2",
+    "nitrogen-file-store": "~0.2"
+  }
+}

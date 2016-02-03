@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  br
+  .row
+      
+        .sidebar
+          .header
+            a(href="/") #{title}
+          .sidebar__content
+              | Status: 
+              label(id='status') Waiting
+              script.
+                updateStatusws("#{title}");
+
+              h3 General Information
+              .form-group
+                label(for='usr') Patient id:
+                input.form-control(type='text' id='patientid' name='patiendid')
+                br
+              div
+                button.btn.btn-primary(onclick='sendMessage( "#{title}" )' )
+                  | Start analysis
+                

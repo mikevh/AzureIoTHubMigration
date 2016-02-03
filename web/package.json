@@ -1,0 +1,29 @@
+{
+  "name": "MyWebApp",
+  "version": "0.0.0",
+  "description": "MyWebApp",
+  "main": "app.js",
+  "author": {
+    "name": "Janne Koskinen",
+    "email": "jtjk@iki.fi"
+  },
+  "license":  "MIT",
+  "dependencies": {
+    "amqp10": "2.1.2",
+    "azure-iot-common": "1.0.0-preview.6",
+    "azure-iothub": "1.0.0-preview.6",
+    "bluebird": "^3.0.5",
+    "body-parser": "^1.14.1",
+    "cookie-parser": "1.4.1",
+    "express": "4.13.3",
+    "jade": "*",
+    "jsonwebtoken": "^5.4.1",
+    "mongodb": "^2.1.3",
+    "mongoose": "^4.2.8",
+    "morgan": "^1.6.1",
+    "nitrogen": "^0.2.24",
+    "pngjs": "^2.2.0",
+    "stylus": "*",
+    "ws": "^0.8.1"
+  }
+}

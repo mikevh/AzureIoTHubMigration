@@ -1,0 +1,84 @@
+﻿a:link { color:#d0d0d0;  }
+a:visited { color:#c0c0c0;}
+a:hover { color:#ffffff;  }
+a:active { color:#f0f0f0; }
+
+.sidebar {
+  /*width: 300px;*/
+}
+
+
+.sidebar__content {
+  border: 1px solid #CCC;
+  border-radius: 0 0 5px 5px;
+  padding: 20px;
+}
+
+.header {
+  position: relative;
+  line-height:48px;
+background: -moz-linear-gradient(top, rgba(20,82,159,1) 0%, rgba(0,119,230,1) 100%);
+  
+  /* styles under are just for fun */
+  border-radius: 5px 5px 0 0;
+  text-indent: 20px;
+  text-transform: uppercase;
+  font-family: arial;
+  font-weight: bold;
+  color: white;
+}
+
+.header:before {
+  content: '';
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  top: 100%;
+  bottom: -6px;
+  background: -moz-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.9) 100%);
+  /* box shadow is for making it a little bit blurred */
+  box-shadow: inset -7px 0 5px 0 white;
+
+  /* styles under are just for fun */
+  border-top: 1px dotted white;
+}
+.header:after {
+  content: '';
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  top:100%;
+  bottom: -6px;
+  /* make a triangular mask */
+  border-left: 130px solid white;
+  border-right: 130px solid white;
+  border-bottom: 0;
+  border-top: 6px solid transparent;
+  /* this one smoothes out the edge of a border */
+  -moz-border-top-colors: transparent rgba( 0,0,0,0);
+}
+
+
+/* making backgrounds compatible */  
+.header {
+background: rgba(20,82,159,1);
+background: -moz-linear-gradient(top, rgba(20,82,159,1) 0%, rgba(0,119,230,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(20,82,159,1)), color-stop(100%, rgba(0,119,230,1)));
+background: -webkit-linear-gradient(top, rgba(20,82,159,1) 0%, rgba(0,119,230,1) 100%);
+background: -o-linear-gradient(top, rgba(20,82,159,1) 0%, rgba(0,119,230,1) 100%);
+background: -ms-linear-gradient(top, rgba(20,82,159,1) 0%, rgba(0,119,230,1) 100%);
+background: linear-gradient(to bottom, rgba(20,82,159,1) 0%, rgba(0,119,230,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#14529f', endColorstr='#0077e6', GradientType=0 );
+}
+
+.header:before {
+ background: rgba(0,0,0,0.9);
+background: -moz-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.9) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,0.9)), color-stop(45%, rgba(0,0,0,0.15)), color-stop(55%, rgba(0,0,0,0.15)), color-stop(100%, rgba(0,0,0,0.9)));
+background: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.9) 100%);
+background: -o-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.9) 100%);
+background: -ms-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.9) 100%);
+background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.9) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );
+
+}

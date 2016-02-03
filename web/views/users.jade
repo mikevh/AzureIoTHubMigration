@@ -1,0 +1,60 @@
+﻿extends layout
+
+block content
+  script.
+    function adminpageGetUsers() {return !{userstrings}};
+  .sidebar
+      br
+      .header Users
+      .sidebar__content
+        table.table.table-striped
+          thead
+              tr
+              th Edit
+              th User name
+              th Admin
+              th Projects
+              th Devices
+          tbody
+            each user in users
+                tr
+                  td
+                    button.btn(onclick='admin.editUser("'+user._id+'")')
+                      span.glyphicon.glyphicon-pencil
+                      | Edit
+                  td= user.name
+                  td= user.admin
+                  td
+                    each device in user.devices
+                      span= device +" "
+                  td
+                    each project in user.projects
+                      span= project +" "
+      //.sidebar__content
+      button.btn(onclick='admin.newUser()')
+                    span.glyphicon.glyphicon-plus
+                    | New user
+      br
+      br
+      #userformcontainer.hidden
+          .header(id='formTitle') Create user
+          .sidebar__content
+            .title User Data
+                 form(id='userform', role='form', method='post')
+                    .form-group
+                        label(for='username') Username:
+                        input#username.form-control(type='text', name='username')
+                    .form-group
+                        label(for='passwd') Password:
+                        input#passwd.form-control(type='password', name='password')
+                    .form-group
+                        label(for='deviceList') Devices:
+                        input#deviceList.form-control(type='text', name='devices')
+                    .form-group
+                        label(for='projectList') Projects:
+                        input#projectList.form-control(type='text', name='projects')
+                    .form-group
+                        label(for='admin') Is Administrator: 
+                          input#admin(type='checkbox', name='admin')
+                    .form-group
+                        button.btn.btn-primary(type='submit' id='actionbtn') Submit
