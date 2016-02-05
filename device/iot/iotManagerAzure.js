@@ -1,4 +1,5 @@
-var clientFromConnectionString = require('azure-iot-device-http').clientFromConnectionString;
+var Amqp = require('azure-iot-device-amqp').Amqp;
+var Client = require('azure-iot-device').Client;
 var Message = require('azure-iot-device').Message;
 var fs = require('fs');
 
@@ -20,7 +21,7 @@ Session.prototype.onMessage = function(type, callback) {
 
 function authenticate(config) {
     azureConfig = config;
-    azureClient = new clientFromConnectionString(config.api_key);
+    azureClient = Client.fromConnectionString(config.api_key, Amqp);
     return azureClient;
 }
 
@@ -30,30 +31,39 @@ function createDevice(obj) {
 }
 
 function connect(service, device, callback) {
-    azureClient.getReceiver(function(receiver) {
-      receiver.on('message', function(msg) { 
-        receiver.complete(msg, print);
-        var data = JSON.parse(msg.getData());
-        data.id = 1;
-        for (var c = 0; c<messagetypes.length;c++) {
-            if (messagetypes[c] == data.type) {
-                callbacks[c](data);
+    var connectCallback = function(err) {
+        console.log("iotManagerAzure Connected");
+        callback(null,session,azureDevice);
+        azureClient.on('message', function (msg) {
+            azureClient.complete(msg, print('completed'));
+            var data = JSON.parse(msg.getData());
+            console.log("iotManagerAzure received message", data);
+            data.id = 1;
+            for (var c = 0; c<messagetypes.length;c++) {
+                if (messagetypes[c] == data.type) {
+                    callbacks[c](data);
+                }
             }
-        }
-      });
-    });
-    callback(null,session,azureDevice);
+        });
+
+        azureClient.on('error', function(err) {
+            console.log("iotManagerAzure error", err.message);
+        });
+
+        azureClient.on('disconect', function() {
+            console.log("iotManagerAzure disconnected");
+            azureClient.removeAllListeners();
+            azureClient.connect(connectCallback);
+        });
+    };
+
+    azureClient.open(connectCallback);
 }
 
 function print(err) {
     if (err) {
         console.log("Azure server error",err.toString());
-
-        //workaround to "not authorized" -problem
-        if (err.toString() == "Error: Unauthorized") {
-            authenticate(azureConfig);
-        }
-    };
+    }
 }
 
 function sendMessage(msg,callback) {

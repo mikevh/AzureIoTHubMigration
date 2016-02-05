@@ -9,8 +9,9 @@
   },
   "dependencies": {
     "azure-iot-device": "^1.0.0-preview.11",
+    "azure-iot-device-amqp": "^1.0.0",
     "azure-iot-device-http": "^1.0.0-preview.11",
     "nitrogen": "~0.2",
-    "nitrogen-file-store": "~0.2"
+    "nitrogen-file-store": "~0.2",
   }
 }
